@@ -4,11 +4,13 @@ import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepci
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
+import org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria.Revisiones;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -41,9 +43,9 @@ class RevisionesTest {
         cliente2 = mock();
         when(cliente2.getDni()).thenReturn("11111111H");
         vehiculo1 = mock();
-        when(vehiculo1.matricula()).thenReturn("1234BCD");
+        when(vehiculo1.vehiculo());
         vehiculo2 = mock();
-        when(vehiculo2.matricula()).thenReturn("1111BBB");
+        when(vehiculo2.vehiculo());
     }
 
     @BeforeEach
@@ -66,7 +68,7 @@ class RevisionesTest {
     @Test
     void constructorCreaRevisionsCorrectamente() {
         assertNotNull(revisiones);
-        assertEquals(0, revisiones.get().size());
+        assertEquals(0, revisiones.get().getFechaFin());
     }
 
     @Test
@@ -75,7 +77,7 @@ class RevisionesTest {
         when(revision1.getFechaFin()).thenReturn(anteayer);
         when(revision1.estaCerrada()).thenReturn(true);
         assertDoesNotThrow(() -> revisiones.insertar(revision3));
-        List<Revision> copiaRevisiones = revisiones.get();
+        List<Revision> copiaRevisiones = Collections.singletonList(revisiones.get());
         assertEquals(2, copiaRevisiones.size());
         assertEquals(revision1, copiaRevisiones.get(0));
         assertSame(revision1, copiaRevisiones.get(0));
@@ -90,7 +92,7 @@ class RevisionesTest {
         when(revision1.estaCerrada()).thenReturn(true);
         assertDoesNotThrow(() -> revisiones.insertar(revision2));
         assertDoesNotThrow(() -> revisiones.insertar(revision3));
-        List<Revision> revisionesCliente = revisiones.get(cliente1);
+        List<Revision> revisionesCliente = Collections.singletonList(revisiones.get(cliente1));
         assertEquals(2, revisionesCliente.size());
         assertEquals(revision1, revisionesCliente.get(0));
         assertSame(revision1, revisionesCliente.get(0));
@@ -105,7 +107,7 @@ class RevisionesTest {
         when(revision1.estaCerrada()).thenReturn(true);
         assertDoesNotThrow(() -> revisiones.insertar(revision2));
         assertDoesNotThrow(() -> revisiones.insertar(revision3));
-        List<Revision> revisionesVehiculo = revisiones.get(vehiculo1);
+        List<Revision> revisionesVehiculo = Collections.singletonList(revisiones.get(vehiculo1));
         assertEquals(2, revisionesVehiculo.size());
         assertEquals(revision1, revisionesVehiculo.get(0));
         assertSame(revision1, revisionesVehiculo.get(0));
@@ -171,7 +173,7 @@ class RevisionesTest {
     @Test
     void anadirHorasRevisionValidaHorasValidasAnadeHorasCorrectamente() {
         assertDoesNotThrow(() -> revisiones.insertar(revision1));
-        assertDoesNotThrow(() -> revisiones.anadirHoras(revision1, 10));
+        assertDoesNotThrow(() -> revisiones.añadirHoras(revision1, 10));
         when(revision1.getHoras()).thenReturn(10);
         Revision revision = revisiones.buscar(revision1);
         assertEquals(10, revision.getHoras());
@@ -180,20 +182,20 @@ class RevisionesTest {
     @Test
     void anadirHorasRevisionNulaHorasValidasLanzaExcepcion() {
         assertDoesNotThrow(() -> revisiones.insertar(revision1));
-        NullPointerException npe = assertThrows(NullPointerException.class, () -> revisiones.anadirHoras(null, 10));
+        NullPointerException npe = assertThrows(NullPointerException.class, () -> revisiones.añadirHoras(null, 10));
         assertEquals("No puedo operar sobre una revisión nula.", npe.getMessage());
     }
 
     @Test
     void anadirHorasRevisionNoExistenteHorasValidasLanzaExcepcion() {
-        TallerMecanicoExcepcion tme = assertThrows(TallerMecanicoExcepcion.class, () -> revisiones.anadirHoras(revision1, 10));
+        TallerMecanicoExcepcion tme = assertThrows(TallerMecanicoExcepcion.class, () -> revisiones.añadirHoras(revision1, 10));
         assertEquals("No existe ninguna revisión igual.", tme.getMessage());
     }
 
     @Test
     void anadirPrecioMaterialRevisionValidaPrecioMaterialValidoAnadaPrecioMaterialCorrectamente() {
         assertDoesNotThrow(() -> revisiones.insertar(revision1));
-        assertDoesNotThrow(() -> revisiones.anadirPrecioMaterial(revision1, 100f));
+        assertDoesNotThrow(() -> revisiones.añadirPrecioMaterial(revision1, 100f));
         when(revision1.getPrecioMaterial()).thenReturn(100f);
         Revision revision = revisiones.buscar(revision1);
         assertEquals(100f, revision.getPrecioMaterial());
@@ -208,14 +210,14 @@ class RevisionesTest {
 
     @Test
     void anadirPrecioMaterialRevisionNoExistentePrecioMaterialValidoLanzaExcepcion() {
-        TallerMecanicoExcepcion tme = assertThrows(TallerMecanicoExcepcion.class, () -> revisiones.anadirPrecioMaterial(revision1, 100f));
+        TallerMecanicoExcepcion tme = assertThrows(TallerMecanicoExcepcion.class, () -> revisiones.añadirPrecioMaterial(revision1, 100f));
         assertEquals("No existe ninguna revisión igual.", tme.getMessage());
     }
 
     @Test
     void anadirPrecioMaterialRevisionValidaPrecioMaterialValidoAnadePrecioMaterialCorrectamente() {
         assertDoesNotThrow(() -> revisiones.insertar(revision1));
-        assertDoesNotThrow(() -> revisiones.anadirPrecioMaterial(revision1, 100f));
+        assertDoesNotThrow(() -> revisiones.añadirPrecioMaterial(revision1, 100f));
         when(revision1.getPrecioMaterial()).thenReturn(100f);
         Revision revision = revisiones.buscar(revision1);
         assertEquals(100f, revision.getPrecioMaterial());
