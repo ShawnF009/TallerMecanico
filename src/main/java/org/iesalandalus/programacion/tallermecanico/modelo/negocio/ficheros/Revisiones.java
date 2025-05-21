@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tallermecanico.modelo.negocio.memoria;
+package org.iesalandalus.programacion.tallermecanico.modelo.negocio.ficheros;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
@@ -25,19 +25,19 @@ public class Revisiones {
         return new Revision();
     }
     public Revision añadirHoras(Revision revision, int horas){
-        return new Revision();
+        return new Revision(revision);
     }
     private Revision getRevision(Revision revision){
-        return new Revision();
+        return new Revision(revision);
     }
     public Revision añadirPrecioMaterial(Revision revision, float precioMaterial){
-        return new Revision();
+        return new Revision(revision);
     }
     public Revision cerrar(Revision revision, LocalDate fechaFin){
-        return new Revision();
+        return new Revision(revision);
     }
     public Revision buscar(Revision revision){
-        return new Revision();
+        return new Revision(revision);
     }
     public void borrar(Revision revision){
     }

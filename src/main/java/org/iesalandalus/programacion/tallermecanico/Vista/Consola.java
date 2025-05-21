@@ -3,7 +3,6 @@ package org.iesalandalus.programacion.tallermecanico.Vista;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Cliente;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Revision;
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.Vehiculo;
-
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
@@ -57,11 +56,11 @@ public class Consola {
         String nombre = leerCadena("Nombre: ");
         String direccion = leerCadena("Dirección: ");
         String telefono = leerCadena("Teléfono: ");
-        return new Cliente(nombre);
+        return new Cliente(leerCliente());
     }
     public Cliente leerClienteDni(){
         String dni = leerCadena("DNI: ");
-        return new Cliente(dni);
+        return new Cliente(leerClienteDni());
     }
     public String leerNuevoNombre(){
         return leerCadena("Nuevo nombre: ");
@@ -76,17 +75,17 @@ public class Consola {
         String color = leerCadena("Color: ");
         float precio = leerReal("Precio: ");
         Cliente cliente = leerClienteDni();
-        return new Vehiculo(matricula);
+        return new Vehiculo(matricula,marca,modelo);
     }
     public Vehiculo leerVehiculoMatricula(){
         String matricula = leerCadena("Matrícula: ");
-        return new Vehiculo(matricula);
+        return new Vehiculo(CADENA_FORMATO_FECHA);
     }
     public Revision leerRevision(){
         String fecha = leerFecha("Fecha (dd/MM/yyyy HH:mm:ss): ");
         String descripcion = leerCadena("Descripción: ");
         float kilometraje = leerReal("Kilometraje: ");
-        return new Revision(fecha, descripcion, kilometraje);
+        return new Revision(leerRevision());
     }
     public int leerHoras(){
         return leerEntero("Horas: ");
