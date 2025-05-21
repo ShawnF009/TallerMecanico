@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tallermecanico.vista.eventos;
+package org.iesalandalus.programacion.tallermecanico.Vista.eventos;
 
 import java.util.HashMap;
 import java.util.Map;

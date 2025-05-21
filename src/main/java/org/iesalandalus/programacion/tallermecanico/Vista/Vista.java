@@ -1,7 +1,7 @@
-package org.iesalandalus.programacion.tallermecanico.vista;
+package org.iesalandalus.programacion.tallermecanico.Vista;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.dominio.*;
-import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
+import org.iesalandalus.programacion.tallermecanico.Vista.eventos.Evento;
 import org.iesalandalus.programacion.tallermecanico.vista.eventos.GestorEventos;
 
 import java.time.LocalDate;

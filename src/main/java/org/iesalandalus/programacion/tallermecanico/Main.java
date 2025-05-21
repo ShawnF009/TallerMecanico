@@ -1,7 +1,7 @@
 package org.iesalandalus.programacion.tallermecanico;
 
-import org.iesalandalus.programacion.tallermecanico.controlador.Controlador;
-import org.iesalandalus.programacion.tallermecanico.controlador.IControlador;
+import org.iesalandalus.programacion.tallermecanico.Controlador.Controlador;
+import org.iesalandalus.programacion.tallermecanico.Controlador.IControlador;
 import org.iesalandalus.programacion.tallermecanico.modelo.FabricaModelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.FabricaFuenteDatos;
 import org.iesalandalus.programacion.tallermecanico.vista.FabricaVista;

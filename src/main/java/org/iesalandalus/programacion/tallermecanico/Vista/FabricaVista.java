@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tallermecanico.vista;
+package org.iesalandalus.programacion.tallermecanico.Vista;
 
 import org.iesalandalus.programacion.tallermecanico.vista.texto.VistaTexto;
 
@@ -6,10 +6,10 @@ public enum FabricaVista {
 
     TEXTO {
         @Override
-        public Vista crear() {
+        public org.iesalandalus.programacion.tallermecanico.vista.Vista crear() {
             return new VistaTexto();
         }
     };
 
-    public abstract Vista crear();
+    public abstract org.iesalandalus.programacion.tallermecanico.vista.Vista crear();
 }

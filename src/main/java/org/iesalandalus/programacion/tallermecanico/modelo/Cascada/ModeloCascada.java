@@ -1,4 +1,4 @@
-package org.iesalandalus.programacion.tallermecanico.modelo.cascada;
+package org.iesalandalus.programacion.tallermecanico.modelo.Cascada;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.Modelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.TallerMecanicoExcepcion;

@@ -1,15 +1,15 @@
-package org.iesalandalus.programacion.tallermecanico.controlador;
+package org.iesalandalus.programacion.tallermecanico.Controlador;
 
 import org.iesalandalus.programacion.tallermecanico.modelo.FabricaModelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.Modelo;
 import org.iesalandalus.programacion.tallermecanico.modelo.negocio.FabricaFuenteDatos;
-import org.iesalandalus.programacion.tallermecanico.vista.FabricaVista;
-import org.iesalandalus.programacion.tallermecanico.vista.Vista;
-import org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento;
+import org.iesalandalus.programacion.tallermecanico.Vista.FabricaVista;
+import org.iesalandalus.programacion.tallermecanico.Vista.Vista;
+import org.iesalandalus.programacion.tallermecanico.Vista.eventos.Evento;
 
 import java.util.Objects;
 
-public class Controlador implements IControlador {
+public abstract class Controlador implements org.iesalandalus.programacion.tallermecanico.Controlador.IControlador {
 
     private final Modelo modelo;
     private final Vista vista;

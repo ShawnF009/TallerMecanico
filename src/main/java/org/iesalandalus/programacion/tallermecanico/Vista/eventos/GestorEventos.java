@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.tallermecanico.vista.eventos;
 
+import org.iesalandalus.programacion.tallermecanico.controlador.Controlador;
+
 import java.util.*;
 
 public class GestorEventos {
@@ -13,7 +15,7 @@ public class GestorEventos {
         }
     }
 
-    public void suscribir(ReceptorEventos receptor, Evento... eventos) {
+    public void suscribir(Controlador receptor, org.iesalandalus.programacion.tallermecanico.vista.eventos.Evento[] eventos) {
         Objects.requireNonNull(receptor, "El receptor de eventos no puede ser nulo.");
         Objects.requireNonNull(eventos, "Te debes suscribir a algún evento.");
         for (Evento evento : eventos) {
